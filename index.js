@@ -24,7 +24,17 @@ app.get('/pessoas', async function(req, res){
 
 app.post('/pessoas', async function(req, res){
   try {
-    var pessoas = await Pessoa.insert();
+    var pessoas = await Pessoa.insert(req.body);
+    res.json(pessoas.rows);
+  } catch (error) {
+    console.error('Erro ao buscar pessoas:', error);
+    res.status(500).json({ error: 'Ocorreu um erro ao buscar pessoas' });
+  }
+});
+
+app.post('/pessoas', async function(req, res){
+  try {
+    var pessoas = await Pessoa.delete(req.body.id);
     res.json(pessoas.rows);
   } catch (error) {
     console.error('Erro ao buscar pessoas:', error);
