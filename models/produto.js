@@ -1,10 +1,10 @@
 const db = require("../db");
 
-class Pessoa {
+class Produto {
   static async select() {
     try {
       const connect = await db.connect();
-      const sql = "SELECT * FROM pessoas"
+      const sql = "SELECT * FROM produtos"
       return await connect.query(sql);
     } catch (error) {
       console.error('Erro em select:', error);
@@ -15,8 +15,8 @@ class Pessoa {
   static async insert(data) {
     try {
       const connect = await db.connect();
-      const sql = "INSERT INTO pessoas(nome, idade, uf) VALUES ('Arthur', '16', 'SP');";
-      const values = [data.nome, data.idade, data.uf];
+      const sql = "INSERT INTO produtos(title, price, details, imageURL, date_register) VALUES ($1, $2, $3, $4, $5);";
+      const values = [data.title, data.price, data.details, data.imageURL, data.date_register];
       return await connect.query(sql, values);
     } catch (error) {
       console.error('Erro em insert:', error);
@@ -28,7 +28,7 @@ class Pessoa {
     try {
       const connect = await db.connect();
       const sql = "";
-      const values = [data.nome, data.idade, data.uf, id];
+      const values = [data.title, data.price, data.details, data.imageURL, data.date_register, id];
       return await connect.query(sql, values);
     } catch (error) {
       console.error('Erro em update:', error);
@@ -39,7 +39,7 @@ class Pessoa {
   static async delete(id) {
     try {
       const connect = await db.connect();
-      const sql = "";
+      const sql = "DELETE FROM produtos WHERE id = $1";
       return await connect.query(sql, [id]);
     } catch (error) {
       console.error('Erro em delete:', error);
@@ -48,4 +48,4 @@ class Pessoa {
   }
 }
 
-module.exports = Pessoa;
+module.exports = Produto;
