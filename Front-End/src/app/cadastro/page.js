@@ -8,7 +8,7 @@ export default function Cadastro() {
     const [title, setTitle] = useState();
     const [price, setPrice] = useState();
     const [details, setDetails] = useState();
-    const [imageURL, setImageURL] = useState();
+    const [imageurl, setImageURL] = useState();
     const [date_register, setDate] = useState();
 
     const cadastrar = (e) => {
@@ -18,9 +18,10 @@ export default function Cadastro() {
             title: title,
             price: price,
             details: details,
-            imageURL: imageURL,
+            imageurl: imageurl,
             date_register: date_register
         }
+        
         const produtoJson = JSON.stringify(produto);
         fetch("http://localhost:3003/produto", {
             method: "POST",
@@ -34,32 +35,32 @@ export default function Cadastro() {
             <form  onSubmit={cadastrar}>
                 <input
                     type="text"
-                    placeholder='Nome:'
-                    nome="nome"
+                    placeholder='Titulo:'
+                    nome="titulo"
                     onChange={e => setTitle(e.target.value)}
                 /><br/>
                 <input
                     type="text"
-                    placeholder='Idade:'
-                    nome="idade"
+                    placeholder='Preço:'
+                    nome="preco"
                     onChange={e => setPrice(e.target.value)}
                 /><br/>
                 <input
                     type="text"
-                    placeholder='UF:'
-                    nome="uf"
+                    placeholder='Detalhes:'
+                    nome="detalhes"
                     onChange={e => setDetails(e.target.value)}
                 /><br/>
                 <input
                     type="text"
-                    placeholder='UF:'
-                    nome="uf"
+                    placeholder='URL da imagem:'
+                    nome="image"
                     onChange={e => setImageURL(e.target.value)}
                 /><br/>
                 <input
                     type="text"
-                    placeholder='UF:'
-                    nome="uf"
+                    placeholder='Data de registro:'
+                    nome="date_register"
                     onChange={e => setDate(e.target.value)}
                 /><br/>
                 <button type='submit'>Cadastrar</button>

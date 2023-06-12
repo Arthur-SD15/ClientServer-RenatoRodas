@@ -1,14 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-
-    async rewrites() {
-        return [
-          {
-            source: '/api/:path*',
-            destination: 'https://localhost:3003/',
-          },
-        ]
-      },
+  experimental: {
+    appDir: true,
+  },
+  images: {
+    domains: ['localhost', 'images.tcdn.com.br']
+  },
 }
 
 module.exports = nextConfig
