@@ -19,7 +19,6 @@ export default async function Produto ({ params }) {
     const remover = () => {
         console.log(idJson)
         try {
-            console.log("oie")
             fetch("http://localhost:3003/produto", {
                 method: "DELETE",
                 headers: { 'content-type': 'application/json' },
