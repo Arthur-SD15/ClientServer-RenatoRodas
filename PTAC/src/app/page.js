@@ -11,7 +11,6 @@ export default async function Home() {
 
   return (
     <main> 
-      <Link href="/cadastro" className='voltar'> CADASTRAR </Link>
       {produtos.map(produto => (
         <div key={produto.id}>
           <img src={produto.imageurl} width={100} height={100}></img>
