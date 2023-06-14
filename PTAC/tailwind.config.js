@@ -11,9 +11,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'custom-amarelo': '#FF9D00',
-        'custom-black': '#0F0F0F',
-        'custom-green': '#3EC200'
+        'custom-yellow': '#FF9D00',
+        'custom-blue': '#171C22',
+        'custom-green': '#3EC200',
+        'custom-green-hover': '#359d04',
+      },
+      borderWidth: {
+        '12': '12px',
       },
     },
   },
