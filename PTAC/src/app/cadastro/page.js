@@ -104,7 +104,7 @@ export default function Cadastro() {
           <div className="mb-4">
             <textarea
               placeholder="Descrição"
-              className="border border-gray-400 rounded p-2 w-full h-32 text-gray-800"
+              className="border border-gray-400 resize-none rounded p-2 w-full h-32 text-gray-800"
               style={{ border: "1px solid #888888", color: "#888888" }}
               onChange={(e) => setDetails(e.target.value)}
               required
@@ -113,7 +113,7 @@ export default function Cadastro() {
           <div>
             <button
               type="submit"
-              className="bg-custom-yellow text-white rounded py-2 px-8 hover:bg-custom-yellowhover"
+              className="bg-custom-yellow text-white rounded py-2 px-8 hover:bg-custom-yellow-hover"
             >
               Enviar
             </button>

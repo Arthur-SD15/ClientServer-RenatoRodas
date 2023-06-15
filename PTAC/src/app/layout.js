@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
-      <body>
+      <body style={{ backgroundColor: "#f4f4f4" }}>
         <Header />
         {children}
         <Rodape />
