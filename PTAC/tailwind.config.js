@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       colors: {
         'custom-yellow': '#FF9D00',
+        'custom-yellowhover': '#c07f16',
         'custom-blue': '#171C22',
         'custom-green': '#3EC200',
         'custom-green-hover': '#359d04',
