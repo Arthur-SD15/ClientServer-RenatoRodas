@@ -63,13 +63,12 @@ export default function Capa() {
         >
           <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 rounded-lg dark:bg-custom-blue md:flex-row md:space-x-8 md:mt-0 md:bg-white dark:bg-custom-blue md:dark:bg-custom-blue">
             <li>
-              <a
-                href="#"
+            <Link
+                href="/"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-custom-yellow md:hover:bg-transparent md:hover:text-custom-yellow md:p-0 md:dark:hover:text-custom-yellow dark:text-white dark:hover:bg-gray-700 dark:hover:text-custom-yellow md:dark:hover:bg-transparent"
-                aria-current="page"
               >
-                Início
-              </a>
+                Inicio
+              </Link>
             </li>
             <li>
               <a
@@ -89,7 +88,7 @@ export default function Capa() {
             </li>
             <li>
               <Link
-                href="/"
+                href="/produtos"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-custom-yellow md:hover:bg-transparent md:hover:text-custom-yellow md:p-0 md:dark:hover:text-custom-yellow dark:text-white dark:hover:bg-gray-700 dark:hover:text-custom-yellow md:dark:hover:bg-transparent"
                 aria-current="page"
               >

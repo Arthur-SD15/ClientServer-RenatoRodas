@@ -9,7 +9,7 @@ export default function Rodape() {
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <img
-              className="h-12 mr-3"
+              className="h-14 mr-3"
               src="../logo-renato-rodas.png"
               alt="Logo Renato Rodas"
             />
@@ -42,8 +42,18 @@ export default function Rodape() {
                   <FontAwesomeIcon icon={faWhatsapp} className="mr-2 rounded-full bg-custom-yellow p-2" />
                 </li>
               </ul>
+              <ul className="text-white text-sm dark:text-white">
+                <li className="mb-4">
+                  <h2 className="mb-4 text-base mt-8 font-bold text-custom-yellow uppercase dark:text-custom-yellow">
+                    Informações
+                  </h2>
+                </li>
+                <li>
+                    <p>CNPJ: 02.141.732/0001-27 - 02141732000127</p>
+                    <p>Jurandir Lazarini, Renato Lazarini</p>
+                </li>
+              </ul>
             </div>
-
             <div className="md:mt-0 mt-4 hidden md:block">
               <h2 className="mb-4 text-base font-bold text-custom-yellow uppercase dark:text-custom-yellow">
                 Endereço
