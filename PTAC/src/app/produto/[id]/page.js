@@ -17,7 +17,6 @@ export default async function Produto({ params }) {
   const produto = await req.json();
 
   const remover = () => {
-    console.log(idJson);
     try {
       fetch("http://localhost:3003/produto", {
         method: "DELETE",
@@ -29,7 +28,26 @@ export default async function Produto({ params }) {
       alert("Ocorreu um erro" + error);
     }
   };
-
+  
+  const alterar = () => {
+    try {
+      fetch("http://localhost:3003/produto", { 
+        method: "PUT", 
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ 
+          title: produto.title,
+          price: produto.price,
+          details: produto.details,
+          imageurl: produto.imageurl,
+          date_register: produto.date_register
+        }),
+      });
+      router.push("/alterar/"+ params.id);
+    } catch (error) {
+      alert("Ocorreu um erro" + error);
+    }
+  };
+  
   return (
     <div className="flex m-8 justify-center">
       <div
@@ -53,13 +71,25 @@ export default async function Produto({ params }) {
           </p>
           <button
             className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
-            onClick={(e) => e.preventDefault(remover())}
+            onClick={(e) => {
+              e.preventDefault();
+              remover();
+            }}
           >
             Remover
           </button>
+          <button
+            className="bg-green-500 hover:bg-green-600 text-center text-white font-bold py-2 px-4 rounded mt-2"
+            onClick={(e) => {
+              e.preventDefault();
+              alterar();
+            }}
+          >
+            Atualizar
+          </button>
           <a
             href="/produtos"
-            class="bg-blue-500 hover:bg-blue-600 text-center text-white font-bold py-2 px-4 rounded mt-2"
+            className="bg-blue-500 hover:bg-blue-600 text-center text-white font-bold py-2 px-4 rounded mt-2"
           >
             Voltar
           </a>

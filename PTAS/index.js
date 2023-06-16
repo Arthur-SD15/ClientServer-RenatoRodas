@@ -31,6 +31,18 @@ app.post('/produtos', async function(req, res){
   }
 });
 
+app.put('/produto/:id', async function(req, res){
+  try {
+    const id = req.params.id;
+    const data = req.body;
+    var produto = await Produto.update(id, data);
+    res.json(produto.rows);
+  } catch (error) {
+    console.error('Erro em atualizar produto:', error);
+    res.status(500).json({ error: 'Ocorreu um erro ao atualizar o produto' });
+  }
+});
+
 app.post('/produto', async function(req, res){
   try {
     var produto = await Produto.insert(req.body);

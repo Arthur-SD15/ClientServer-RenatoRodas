@@ -38,7 +38,7 @@ class Produto {
   static async update(id, data) {
     try {
       const connect = await db.connect();
-      const sql = "";
+      const sql = "UPDATE produtos SET title = $1, price = $2, details = $3, imageurl = $4, date_register = $5 WHERE id = $6";
       const values = [data.title, data.price, data.details, data.imageurl, data.date_register, id];
       return await connect.query(sql, values);
     } catch (error) {
@@ -46,7 +46,7 @@ class Produto {
       throw error;
     }
   }
-
+   
   static async delete(id) {
     try {
       const connect = await db.connect();

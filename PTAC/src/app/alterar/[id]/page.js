@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function Cadastro() {
+export default function Alterar({ params }) {
   const route = useRouter();
   const [title, setTitle] = useState();
   const [price, setPrice] = useState();
@@ -11,17 +11,9 @@ export default function Cadastro() {
   const [imageurl, setImageURL] = useState();
   const [date_register, setDate] = useState();
 
-  const handlePriceChange = (e) => {
-    const value = e.target.value;
-    if (value === "" || /^\d+(.\d{0,2})?$/.test(value)) {
-      setPrice(value);
-      setValidationMessage("");
-    } else {
-      setValidationMessage("O número deve conter no maximo duas casas decimais.");
-    }
-  };
+  const id = params.id;
 
-  const cadastrar = (e) => {
+  const alterar = (e) => {
     e.preventDefault();
 
     const produto = {
@@ -33,29 +25,41 @@ export default function Cadastro() {
     };
 
     const produtoJson = JSON.stringify(produto);
-    fetch("http://localhost:3003/produto", {
-      method: "POST",
+    fetch("http://localhost:3003/produto/" + id, {
+      method: "PUT",
       headers: { "content-Type": "application/json" },
       body: produtoJson,
     })
       .then(function () {
-        route.push("/produtos");
+        route.push("/alterar/" + params.id + "?title=" + encodeURIComponent(title) + "&price=" + encodeURIComponent(price));
       })
       .catch(() => console.log("Não foi possível cadastrar!"));
+  };
+
+  const handlePriceChange = (e) => {
+    const value = e.target.value;
+    if (value === "" || /^\d+(.\d{0,2})?$/.test(value)) {
+      setPrice(value);
+      setValidationMessage("");
+    } else {
+      setValidationMessage(
+        "O número deve conter no maximo duas casas decimais."
+      );
+    }
   };
 
   return (
     <div className="flex flex-col md:flex-row p-4">
       <div className="w-full md:w-1/2 p-8">
         <h2 className="text-custom-yellow font-bold text-3xl border-b-4 border-custom-yellow">
-          Cadastro de Produtos
+          Alteração de Produto
         </h2>
         <p className="text-gray-600 mt-4">
-          Essa é área de cadastro de produtos, através do formulário inclua o produto requisitado.
+          Essa é área de alterarção de produto, através do formulário altere os dados do produto requisitado.
         </p>
       </div>
       <div className="w-full md:w-1/2 p-8">
-        <form onSubmit={cadastrar}>
+        <form onSubmit={alterar}>
           <div className="mb-4">
             <input
               type="text"
