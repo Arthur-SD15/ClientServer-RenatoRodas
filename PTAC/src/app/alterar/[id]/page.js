@@ -1,17 +1,39 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Alterar({ params }) {
   const route = useRouter();
-  const [title, setTitle] = useState();
-  const [price, setPrice] = useState();
-  const [validationMessage, setValidationMessage] = useState("");
-  const [details, setDetails] = useState();
-  const [imageurl, setImageURL] = useState();
-  const [date_register, setDate] = useState();
-
   const id = params.id;
+  const codigo = { id: parseInt(params.id) };
+
+  const idJson = JSON.stringify(codigo);
+
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState("");
+  const [validationMessage, setValidationMessage] = useState("");
+  const [details, setDetails] = useState("");
+  const [imageurl, setImageURL] = useState("");
+  const [date_register, setDate] = useState("");
+
+  useEffect(() => {
+    async function loadList() {
+      const req = await fetch("http://localhost:3003/produtos", {
+        method: "POST",
+        cache: "no-cache",
+        headers: { "content-type": "application/json" },
+        body: idJson,
+      });
+      const produto = await req.json();
+      setTitle(produto.title);
+      setPrice(produto.price);
+      setDetails(produto.details);
+      setImageURL(produto.imageurl);
+      setDate(produto.date_register.slice(0, 10));
+    }
+    loadList();
+  }, [idJson]);
 
   const alterar = (e) => {
     e.preventDefault();
@@ -31,7 +53,9 @@ export default function Alterar({ params }) {
       body: produtoJson,
     })
       .then(function () {
-        route.push("/alterar/" + params.id + "?title=" + encodeURIComponent(title) + "&price=" + encodeURIComponent(price));
+        route.push(
+          "/produtos"
+        );
       })
       .catch(() => console.log("Não foi possível cadastrar!"));
   };
@@ -43,7 +67,7 @@ export default function Alterar({ params }) {
       setValidationMessage("");
     } else {
       setValidationMessage(
-        "O número deve conter no maximo duas casas decimais."
+        "O número deve conter no máximo duas casas decimais."
       );
     }
   };
@@ -51,21 +75,37 @@ export default function Alterar({ params }) {
   return (
     <div className="flex flex-col md:flex-row p-4">
       <div className="w-full md:w-1/2 p-8">
-        <h2 className="text-custom-yellow font-bold text-3xl border-b-4 border-custom-yellow">
+        <h2 className="text-custom-yellow font-bold text-3xl border-b-4 border-custom-yellow mb-4 md:mb-0">
           Alteração de Produto
         </h2>
-        <p className="text-gray-600 mt-4">
-          Essa é área de alterarção de produto, através do formulário altere os dados do produto requisitado.
+        <p className="text-gray-600 mt-4 md:max-w-md">
+          Essa é a área de alteração de produto. Através do formulário, você pode alterar os dados do produto desejado.
         </p>
+        <div className="flex flex-col rounded-lg bg-white dark:bg-custom-blue mt-3 md:max-w-4xl md:flex-row shadow-xl">
+          <img
+            className="aspect-w-3 bg-white aspect-h-6 w-full rounded-t-lg object-contain md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+            src={imageurl}
+            alt="Imagem do produto"
+          />
+          <div className="flex flex-col justify-start p-6">
+            <h5 className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50 text-left text-justify">
+              {title} - <span className="text-custom-yellow font-bold">R${price}</span>
+            </h5>
+            <p className="mb-4 text-sm text-neutral-600 dark:text-neutral-200 text-left text-justify">
+              {details}
+            </p>
+          </div>
+        </div>
       </div>
       <div className="w-full md:w-1/2 p-8">
-        <form onSubmit={alterar}>
+        <form onSubmit={alterar} className="mt-4">
           <div className="mb-4">
             <input
               type="text"
               placeholder="Nome"
+              value={title}
               className="border border-gray-400 rounded p-2 w-full text-gray-800"
-              style={{ border: "1px solid #888888", color: "#888888" }}
+              style={{ border: '1px solid #888888', color: '#888888' }}
               onChange={(e) => setTitle(e.target.value)}
               required
             />
@@ -75,7 +115,7 @@ export default function Alterar({ params }) {
               type="text"
               placeholder="Preço"
               className="border border-gray-400 rounded p-2 w-full text-gray-800"
-              style={{ border: "1px solid #888888", color: "#888888" }}
+              style={{ border: '1px solid #888888', color: '#888888' }}
               value={price}
               onChange={handlePriceChange}
               required
@@ -88,8 +128,9 @@ export default function Alterar({ params }) {
             <input
               type="text"
               placeholder="Imagem (URL)"
+              value={imageurl}
               className="border border-gray-400 rounded p-2 w-full text-gray-800"
-              style={{ border: "1px solid #888888", color: "#888888" }}
+              style={{ border: '1px solid #888888', color: '#888888' }}
               onChange={(e) => setImageURL(e.target.value)}
               required
             />
@@ -98,8 +139,9 @@ export default function Alterar({ params }) {
             <input
               type="text"
               placeholder="Data de cadastro"
+              value={date_register}
               className="border border-gray-400 rounded p-2 w-full text-gray-800"
-              style={{ border: "1px solid #888888", color: "#888888" }}
+              style={{ border: '1px solid #888888', color: '#888888' }}
               onChange={(e) => setDate(e.target.value)}
               required
             />
@@ -107,8 +149,9 @@ export default function Alterar({ params }) {
           <div className="mb-4">
             <textarea
               placeholder="Descrição"
+              value={details}
               className="border border-gray-400 resize-none rounded p-2 w-full h-32 text-gray-800"
-              style={{ border: "1px solid #888888", color: "#888888" }}
+              style={{ border: '1px solid #888888', color: '#888888' }}
               onChange={(e) => setDetails(e.target.value)}
               required
             ></textarea>
