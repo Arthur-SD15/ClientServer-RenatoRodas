@@ -21,19 +21,19 @@ export default function Inicio() {
         }`}
       >
         <img
-          src="https://sportbuzz.uol.com.br/media/_versions/douglascosta_82934045_116411013185365_8270789263511275541_n_widelg.jpg"
+          src="https://pneuzao.com.br/wp-content/uploads/2023/04/banner-home_brutus_desktop-1.jpg"
           className="w-full"
         />
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
           <button
             onClick={handlePrevSlide}
-            className="btn btn-circle text-white rounded-full bg-custom-yellow p-2"
+            className="btn btn-circle text-white rounded-full bg-custom-yellow p-2 hover:bg-custom-yellow-hover"
           >
             ❮
           </button>
           <button
             onClick={handleNextSlide}
-            className="btn btn-circle text-white rounded-full bg-custom-yellow p-2"
+            className="btn btn-circle text-white rounded-full bg-custom-yellow p-2 hover:bg-custom-yellow-hover"
           >
             ❯
           </button>
@@ -46,19 +46,19 @@ export default function Inicio() {
         }`}
       >
         <img
-          src="https://sportbuzz.uol.com.br/media/_versions/douglascosta_82934045_116411013185365_8270789263511275541_n_widelg.jpg"
+          src="https://pneuzao.com.br/wp-content/uploads/2023/04/banner-home_blacklion_desktop-1.jpg"
           className="w-full"
         />
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
           <button
             onClick={handlePrevSlide}
-            className="btn btn-circle text-white rounded-full bg-custom-yellow p-2"
+            className="btn btn-circle text-white rounded-full bg-custom-yellow p-2 hover:bg-custom-yellow-hover"
           >
             ❮
           </button>
           <button
             onClick={handleNextSlide}
-            className="btn btn-circle text-white rounded-full bg-custom-yellow p-2"
+            className="btn btn-circle text-white rounded-full bg-custom-yellow p-2 hover:bg-custom-yellow-hover"
           >
             ❯
           </button>
@@ -71,19 +71,19 @@ export default function Inicio() {
         }`}
       >
         <img
-          src="https://sportbuzz.uol.com.br/media/_versions/douglascosta_82934045_116411013185365_8270789263511275541_n_widelg.jpg"
+          src="https://pneuzao.com.br/wp-content/uploads/2023/04/banner-home_bkt_desktop-1.jpg"
           className="w-full"
         />
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
           <button
             onClick={handlePrevSlide}
-            className="btn btn-circle text-white rounded-full bg-custom-yellow p-2"
+            className="btn btn-circle text-white rounded-full bg-custom-yellow p-2 hover:bg-custom-yellow-hover"
           >
             ❮
           </button>
           <button
             onClick={handleNextSlide}
-            className="btn btn-circle text-white rounded-full bg-custom-yellow p-2"
+            className="btn btn-circle text-white rounded-full bg-custom-yellow p-2 hover:bg-custom-yellow-hover"
           >
             ❯
           </button>
