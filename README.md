@@ -1,5 +1,5 @@
 <h1 align="center">
-  Projeto Interdisciplinar | Renato Rodas
+  Client and Server | Loja Renato Rodas
 </h1>
 
 <p align="center">
