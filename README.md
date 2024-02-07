@@ -24,7 +24,6 @@ Para a criação da aplicação, foram utilizadas técnicas e ferramentas como R
 
 A comunicação entre o cliente e o servidor foi realizada por meio do consumo de dados utilizando a API Fetch. O projeto foi gerado utilizando as técnicas aprendidas em aula, utilizando o framework Express e Sequelize para a criação das rotas e métodos de inserção, remoção e recuperação de produtos.
 
-Futuramente, após adaptações necessárias no código, o projeto poderá ser vendido para uma empresa interessada em utilizar a aplicação desenvolvida.
 
 ## 📝 Pré-requesitos
 
