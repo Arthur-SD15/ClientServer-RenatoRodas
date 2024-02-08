@@ -38,7 +38,7 @@ Antes de baixar o projeto você vai precisar ter instalado na sua máquina as se
 
 ```bash
 # Clonar Projeto.
-$ git clone https://github.com/Arthur-SD15/Interdisciplinar-Projeto.git
+$ git clone https://github.com/Arthur-SD15/ClientServer-RenatoRodas.git
 
 # Entrar na pasta PTAS.
 $ cd PTAS
