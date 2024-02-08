@@ -6,6 +6,7 @@
   <a href="#-Projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-Pré-requesitos">Pré-requesitos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-Executar Projeto">Executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-Banco de Dados">Executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-Alunos">Alunos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-Professores">Professores</a>
 </p>
@@ -38,7 +39,7 @@ Antes de baixar o projeto você vai precisar ter instalado na sua máquina as se
 
 ```bash
 # Clonar Projeto.
-$ git clone https://github.com/Arthur-SD15/Interdisciplinar-Projeto.git
+$ git clone https://github.com/Arthur-SD15/ClientServer-RenatoRodas.git
 
 # Entrar na pasta PTAS.
 $ cd PTAS
@@ -59,6 +60,15 @@ $ npm install
 # Executar.
 $ npm run dev
 
+ ```
+
+## 📬 Banco de Dados
+```bash
+# É necessário criar um  Banco de Dados, recomenda-se que seja por meio do PostgreSQL.
+# Criar tabela e armazenar as informações inicial, como por exemplo, as que estão disponível no arquivo sql.sql.
+# Configurar connectionString, disponível em db.js, preenchendo com as informações respectivas que foram criada no seu Banco de Dados.
+
+$ postgres://<username>:<password>@<host>:<port>/<database>
  ```
 
 ## 🧑 Alunos

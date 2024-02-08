@@ -92,7 +92,7 @@ export default function Cadastro() {
           </div>
           <div className="mb-4">
             <input
-              type="text"
+              type="date"
               placeholder="Data de cadastro"
               className="border border-gray-400 rounded p-2 w-full text-gray-800"
               style={{ border: "1px solid #888888", color: "#888888" }}

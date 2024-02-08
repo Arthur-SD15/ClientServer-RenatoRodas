@@ -137,7 +137,7 @@ export default function Alterar({ params }) {
           </div>
           <div className="mb-4">
             <input
-              type="text"
+              type="date"
               placeholder="Data de cadastro"
               value={date_register}
               className="border border-gray-400 rounded p-2 w-full text-gray-800"
