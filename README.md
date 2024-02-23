@@ -4,9 +4,10 @@
 
 <p align="center">
   <a href="#-Projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-Preview">Visualizar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-Pré-requesitos">Pré-requesitos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-Executar Projeto">Executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-Banco de Dados">Executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-Banco de Dados">Banco de Dados</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-Alunos">Alunos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-Professores">Professores</a>
 </p>
@@ -26,6 +27,17 @@ Para a criação da aplicação, foram utilizadas técnicas e ferramentas como R
 A comunicação entre o cliente e o servidor foi realizada por meio do consumo de dados utilizando a API Fetch. O projeto foi gerado utilizando as técnicas aprendidas em aula, utilizando o framework Express e Sequelize para a criação das rotas e métodos de inserção, remoção e recuperação de produtos.
 
 
+## 👀 Preview
+
+| Início | Produtos |
+|----------|----------|
+| ![Descrição da imagem 1](PTAC/public/inicio.png) | ![Descrição da imagem 2](PTAC/public/produtos.png) |
+
+| Produto | Alterar |
+|----------|----------|
+| ![Descrição da imagem 3](PTAC/public/produto.png) | ![Descrição da imagem 4](PTAC/public/alterar.png) |
+
+
 ## 📝 Pré-requesitos
 
 Antes de baixar o projeto você vai precisar ter instalado na sua máquina as seguintes ferramentas:
@@ -34,6 +46,7 @@ Antes de baixar o projeto você vai precisar ter instalado na sua máquina as se
 - [NodeJS](https://nodejs.org/en/)
 - [NPM](https://www.npmjs.com/)
 - [PostgreSQL](https://www.postgresql.org/)
+
 
 ## 🗂 Executar Projeto
 
@@ -70,6 +83,7 @@ $ npm run dev
 
 $ postgres://<username>:<password>@<host>:<port>/<database>
  ```
+
 
 ## 🧑 Alunos
 
