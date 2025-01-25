@@ -82,7 +82,7 @@ export default function Alterar({ params }) {
           Essa é a área de alteração de produto. Através do formulário, você pode alterar os dados do produto desejado.
         </p>
         <div className="flex flex-col rounded-lg bg-white dark:bg-custom-blue mt-3 md:max-w-4xl md:flex-row shadow-xl">
-          <img
+          <Image
             className="aspect-w-3 bg-white aspect-h-6 w-full rounded-t-lg object-contain md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
             src={imageurl}
             alt="Imagem do produto"
