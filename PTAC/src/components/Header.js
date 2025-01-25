@@ -2,11 +2,17 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Capa() {
+  const route = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const goToProdutos = () => {
+    route.push("/produtos");
+  }
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -88,13 +94,12 @@ export default function Capa() {
               </a>
             </li>
             <li>
-              <Link
-                href="/produtos"
+            <button
+                onClick={goToProdutos}
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-custom-yellow md:hover:bg-transparent md:hover:text-custom-yellow md:p-0 md:dark:hover:text-custom-yellow dark:text-white dark:hover:bg-gray-700 dark:hover:text-custom-yellow md:dark:hover:bg-transparent"
-                aria-current="page"
               >
                 Produtos
-              </Link>
+              </button>
             </li>
             <li>
               <Link

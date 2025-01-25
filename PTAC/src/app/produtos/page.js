@@ -1,10 +1,12 @@
 "use client";
-
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 require('dotenv').config(); 
 
 export default async function Home() {
+  const route = useRouter();
+  
   const req = await fetch(`${process.env.URL_API}/produtos`, {
     cache: "no-cache",
   });

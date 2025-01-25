@@ -22,7 +22,7 @@ export default function Inicio() {
         }`}
       >
         <Image
-          src="https://pneuzao.com.br/wp-content/uploads/2023/04/banner-home_brutus_desktop-1.jpg"
+          src="/banner1.jpg"
           className="w-full"
           layout="fill"
           alt="Banner"
@@ -49,7 +49,7 @@ export default function Inicio() {
         }`}
       >
         <Image
-          src="https://pneuzao.com.br/wp-content/uploads/2023/04/banner-home_blacklion_desktop-1.jpg"
+          src="/banner2.jpg"
           className="w-full"
           layout="fill"
           alt="Banner"
@@ -76,7 +76,7 @@ export default function Inicio() {
         }`}
       >
         <Image
-          src="https://pneuzao.com.br/wp-content/uploads/2023/04/banner-home_bkt_desktop-1.jpg"
+          src="/banner3.jpg"
           className="w-full"
           layout="fill"
           alt="Banner"
