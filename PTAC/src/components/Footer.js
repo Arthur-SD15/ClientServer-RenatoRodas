@@ -11,7 +11,7 @@ export default function Rodape() {
           <div className="mb-6 md:mb-0">
             <Image
               className="h-14 mr-3"
-              src="../logo-renato-rodas.png"
+              src="/logo-renato-rodas.png"
               alt="Logo Renato Rodas"
             />
           </div>

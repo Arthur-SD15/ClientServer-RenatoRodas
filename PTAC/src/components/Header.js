@@ -17,7 +17,7 @@ export default function Capa() {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a className="flex items-center">
           <Image
-            src="../logo-renato-rodas.png"
+            src="/logo-renato-rodas.png"
             className="h-8 mr-3"
             alt="Renato Rodas Logo"
           />

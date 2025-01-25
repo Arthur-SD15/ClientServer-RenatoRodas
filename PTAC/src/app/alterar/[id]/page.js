@@ -36,7 +36,7 @@ export default function Alterar({ params }) {
       setDate(produto.date_register.slice(0, 10));
     }
     loadList();
-  }, [idJson]);
+  }, [idJson, url]);
 
   const alterar = (e) => {
     e.preventDefault();
