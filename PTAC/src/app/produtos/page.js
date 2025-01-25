@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
+require('dotenv').config(); 
 
 export default async function Home() {
-  const req = await fetch("http://localhost:3003/produtos", {
+  const req = await fetch(`${process.env.URL_API}/produtos`, {
     cache: "no-cache",
   });
 

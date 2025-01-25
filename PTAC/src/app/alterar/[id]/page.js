@@ -2,11 +2,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+require('dotenv').config(); 
 
 export default function Alterar({ params }) {
   const route = useRouter();
   const id = params.id;
   const codigo = { id: parseInt(params.id) };
+  const url = process.env.URL_API;
 
   const idJson = JSON.stringify(codigo);
 
@@ -19,7 +21,7 @@ export default function Alterar({ params }) {
 
   useEffect(() => {
     async function loadList() {
-      const req = await fetch("http://localhost:3003/produtos", {
+      const req = await fetch(url + "/produtos", {
         method: "POST",
         cache: "no-cache",
         headers: { "content-type": "application/json" },
@@ -47,7 +49,7 @@ export default function Alterar({ params }) {
     };
 
     const produtoJson = JSON.stringify(produto);
-    fetch("http://localhost:3003/produto/" + id, {
+    fetch(url + "/produto/" + id, {
       method: "PUT",
       headers: { "content-Type": "application/json" },
       body: produtoJson,

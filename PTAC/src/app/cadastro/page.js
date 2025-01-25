@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+require('dotenv').config(); 
 
 export default function Cadastro() {
   const route = useRouter();
@@ -10,6 +11,7 @@ export default function Cadastro() {
   const [details, setDetails] = useState();
   const [imageurl, setImageURL] = useState();
   const [date_register, setDate] = useState();
+  const url = process.env.URL_API;
 
   const handlePriceChange = (e) => {
     const value = e.target.value;
@@ -33,7 +35,7 @@ export default function Cadastro() {
     };
 
     const produtoJson = JSON.stringify(produto);
-    fetch("http://localhost:3003/produto", {
+    fetch(url + "/produto", {
       method: "POST",
       headers: { "content-Type": "application/json" },
       body: produtoJson,

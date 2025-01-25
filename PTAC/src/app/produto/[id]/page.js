@@ -1,14 +1,16 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+require('dotenv').config(); 
 
 export default async function Produto({ params }) {
   const router = useRouter();
   const id = { id: parseInt(params.id) };
+  const url = process.env.URL_API;
 
   const idJson = JSON.stringify(id);
 
-  const req = await fetch("http://localhost:3003/produtos", {
+  const req = await fetch(url + "/produtos", {
     method: "POST",
     cache: "no-cache",
     headers: { "content-type": "application/json" },
@@ -18,7 +20,7 @@ export default async function Produto({ params }) {
 
   const remover = () => {
     try {
-      fetch("http://localhost:3003/produto", {
+      fetch(url + "/produto", {
         method: "DELETE",
         headers: { "content-type": "application/json" },
         body: idJson,
@@ -31,7 +33,7 @@ export default async function Produto({ params }) {
   
   const alterar = () => {
     try {
-      fetch("http://localhost:3003/produto", { 
+      fetch(url + "/produto", { 
         method: "PUT", 
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ 
