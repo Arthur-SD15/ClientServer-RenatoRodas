@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 require('dotenv').config(); 
 
 export default async function Home() {
@@ -19,7 +20,7 @@ export default async function Home() {
         >
           <Link href={`/produto/${produto.id}`}>
             <div className="flex items-center justify-center h-48">
-              <img
+              <Image
                 className="w-9/12 h-full object-center object-contain"
                 src={produto.imageurl}
                 alt="Imagem Produto"

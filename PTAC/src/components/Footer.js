@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faInstagram, faTiktok, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import Image from "next/image";
 
 export default function Rodape() {
   return (
@@ -8,7 +9,7 @@ export default function Rodape() {
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
-            <img
+            <Image
               className="h-14 mr-3"
               src="../logo-renato-rodas.png"
               alt="Logo Renato Rodas"

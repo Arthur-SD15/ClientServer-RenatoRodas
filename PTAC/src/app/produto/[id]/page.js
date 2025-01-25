@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 require('dotenv').config(); 
+import Image from "next/image";
 
 export default async function Produto({ params }) {
   const router = useRouter();
@@ -56,7 +57,7 @@ export default async function Produto({ params }) {
         className="flex flex-col rounded-lg bg-white dark:bg-custom-blue md:max-w-4xl md:flex-row shadow-lg"
         style={{ boxShadow: "3px 5px 7px 3px rgba(255, 157, 0, 0.8)" }}
       >
-        <img
+        <Image
           className="aspect-w-3 bg-white aspect-h-6 w-full rounded-t-lg object-contain md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
           src={produto.imageurl}
           alt="Imagem do produto"

@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from "react";
 import Image from "next/image";
+import React, { useState } from "react";
 
 export default function Inicio() {
   const [currentSlide, setCurrentSlide] = useState(1);
@@ -21,7 +21,7 @@ export default function Inicio() {
           currentSlide === 1 ? "block" : "hidden"
         }`}
       >
-        <img
+        <Image
           src="https://pneuzao.com.br/wp-content/uploads/2023/04/banner-home_brutus_desktop-1.jpg"
           className="w-full"
         />
@@ -46,7 +46,7 @@ export default function Inicio() {
           currentSlide === 2 ? "block" : "hidden"
         }`}
       >
-        <img
+        <Image
           src="https://pneuzao.com.br/wp-content/uploads/2023/04/banner-home_blacklion_desktop-1.jpg"
           className="w-full"
         />
@@ -71,7 +71,7 @@ export default function Inicio() {
           currentSlide === 3 ? "block" : "hidden"
         }`}
       >
-        <img
+        <Image
           src="https://pneuzao.com.br/wp-content/uploads/2023/04/banner-home_bkt_desktop-1.jpg"
           className="w-full"
         />

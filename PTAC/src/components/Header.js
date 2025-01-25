@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Capa() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,7 +16,7 @@ export default function Capa() {
     <nav className="bg-white dark:bg-custom-blue border-b-12 border-custom-yellow">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a className="flex items-center">
-          <img
+          <Image
             src="../logo-renato-rodas.png"
             className="h-8 mr-3"
             alt="Renato Rodas Logo"
