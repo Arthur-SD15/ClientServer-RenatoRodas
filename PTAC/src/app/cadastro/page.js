@@ -11,7 +11,7 @@ export default function Cadastro() {
   const [details, setDetails] = useState();
   const [imageurl, setImageURL] = useState();
   const [date_register, setDate] = useState();
-  const url = process.env.URL_API;
+  const url = process.env.NEXT_PUBLIC_URL_API;
 
   const handlePriceChange = (e) => {
     const value = e.target.value;

@@ -7,7 +7,7 @@ import Image from "next/image";
 export default async function Produto({ params }) {
   const router = useRouter();
   const id = { id: parseInt(params.id) };
-  const url = process.env.URL_API;
+  const url = process.env.NEXT_PUBLIC_URL_API;
 
   const idJson = JSON.stringify(id);
 
@@ -58,10 +58,12 @@ export default async function Produto({ params }) {
         style={{ boxShadow: "3px 5px 7px 3px rgba(255, 157, 0, 0.8)" }}
       >
         <Image
-          className="aspect-w-3 bg-white aspect-h-6 w-full rounded-t-lg object-contain md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-          src={produto.imageurl}
-          alt="Imagem do produto"
-        />
+  className="aspect-w-3 bg-white aspect-h-6 w-full rounded-t-lg object-contain md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+  src={produto.imageurl}
+  alt="Imagem do produto"
+  width={500}  // Defina a largura da imagem
+  height={300} // Defina a altura da imagem
+/>
         <div className="flex flex-col justify-start p-6">
           <h5 className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50 text-left text-justify">
             {produto.title} -{" "}

@@ -9,11 +9,14 @@ export default function Rodape() {
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
-            <Image
-              className="h-14 mr-3"
-              src="/logo-renato-rodas.png"
-              alt="Logo Renato Rodas"
-            />
+          <Image
+            className="h-auto w-auto mr-3"
+            src="/logo-renato-rodas.png"
+            alt="Logo Renato Rodas"
+            width={200}
+            height={200}  
+            layout="intrinsic" 
+          />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-6">
             <div className="w-full md:w-auto">

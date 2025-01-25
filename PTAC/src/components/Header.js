@@ -25,7 +25,10 @@ export default function Capa() {
           <Image
             src="/logo-renato-rodas.png"
             className="h-8 mr-3"
-            alt="Renato Rodas Logo"
+            alt="Logo Renato Rodas"
+            width={200}
+            height={200}  
+            layout="intrinsic" 
           />
         </a>
         <div className="flex md:order-2">

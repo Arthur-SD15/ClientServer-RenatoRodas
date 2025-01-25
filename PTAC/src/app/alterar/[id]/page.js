@@ -9,7 +9,7 @@ export default function Alterar({ params }) {
   const route = useRouter();
   const id = params.id;
   const codigo = { id: parseInt(params.id) };
-  const url = process.env.URL_API;
+  const url = process.env.NEXT_PUBLIC_URL_API;
 
   const idJson = JSON.stringify(codigo);
 
@@ -86,10 +86,12 @@ export default function Alterar({ params }) {
         </p>
         <div className="flex flex-col rounded-lg bg-white dark:bg-custom-blue mt-3 md:max-w-4xl md:flex-row shadow-xl">
           <Image
-            className="aspect-w-3 bg-white aspect-h-6 w-full rounded-t-lg object-contain md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-            src={imageurl}
-            alt="Imagem do produto"
-          />
+  className="aspect-w-3 bg-white aspect-h-6 w-full rounded-t-lg object-contain md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+  src={imageurl}
+  alt="Imagem do produto"
+  width={500}  // Defina a largura da imagem
+  height={300} // Defina a altura da imagem
+/>
           <div className="flex flex-col justify-start p-6">
             <h5 className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50 text-left text-justify">
               {title} - <span className="text-custom-yellow font-bold">R${price}</span>

@@ -17,15 +17,15 @@ export default function Inicio() {
     <div className="carousel relative w-full">
       <div
         id="slide1"
-        className={`carousel-item relative w-full ${
+        className={`carousel-item relative w-full h-72 ${
           currentSlide === 1 ? "block" : "hidden"
         }`}
       >
         <Image
           src="/banner1.jpg"
-          className="w-full"
-          layout="fill"
+          className="w-full h-full object-cover"
           alt="Banner"
+          layout="fill"
         />
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
           <button
@@ -44,15 +44,15 @@ export default function Inicio() {
       </div>
       <div
         id="slide2"
-        className={`carousel-item relative w-full ${
+        className={`carousel-item relative w-full h-72 ${
           currentSlide === 2 ? "block" : "hidden"
         }`}
       >
         <Image
           src="/banner2.jpg"
-          className="w-full"
-          layout="fill"
+          className="w-full h-full object-cover"
           alt="Banner"
+          layout="fill"
         />
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
           <button
@@ -71,15 +71,15 @@ export default function Inicio() {
       </div>
       <div
         id="slide3"
-        className={`carousel-item relative w-full ${
+        className={`carousel-item relative w-full h-72 ${
           currentSlide === 3 ? "block" : "hidden"
         }`}
       >
         <Image
           src="/banner3.jpg"
-          className="w-full"
-          layout="fill"
+          className="w-full h-full object-cover"
           alt="Banner"
+          layout="fill"
         />
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
           <button
