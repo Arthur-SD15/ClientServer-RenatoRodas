@@ -16,9 +16,11 @@ export default function Alterar({ params }) {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [validationMessage, setValidationMessage] = useState("");
+  const [validationMessageUrl, setValidationMessageUrl] = useState("");
   const [details, setDetails] = useState("");
   const [imageurl, setImageURL] = useState("");
   const [date_register, setDate] = useState("");
+  const [imageError, setImageError] = useState(new Set());
 
   useEffect(() => {
     async function loadList() {
@@ -40,6 +42,10 @@ export default function Alterar({ params }) {
 
   const alterar = (e) => {
     e.preventDefault();
+
+    if (validationMessage || validationMessageUrl) {
+      return;
+    }
 
     const produto = {
       title: title,
@@ -75,6 +81,20 @@ export default function Alterar({ params }) {
     }
   };
 
+  const handleUrlChange = (e) => {
+    const value = e.target.value;
+    if (value === "" || value.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+      setImageURL(value);
+      setValidationMessageUrl("");
+    } else {
+      setValidationMessageUrl("O link da imagem deve terminar com .png, .jpg ou .jpeg.");
+    }
+  };
+
+  const handleImageError = (imageUrl) => {
+    setImageError((prev) => new Set(prev).add(imageUrl));
+  };
+
   return (
     <div className="flex flex-col md:flex-row p-4">
       <div className="w-full md:w-1/2 p-8">
@@ -85,13 +105,20 @@ export default function Alterar({ params }) {
           Essa é a área de alteração de produto. Através do formulário, você pode alterar os dados do produto desejado.
         </p>
         <div className="flex flex-col rounded-lg bg-white dark:bg-custom-blue mt-3 md:max-w-4xl md:flex-row shadow-xl">
-          <Image
-  className="aspect-w-3 bg-white aspect-h-6 w-full rounded-t-lg object-contain md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-  src={imageurl}
-  alt="Imagem do produto"
-  width={500}  // Defina a largura da imagem
-  height={300} // Defina a altura da imagem
-/>
+          {imageError.has(imageurl) ? (
+            <div className="flex items-center justify-center text-center w-full">
+              <p className="text-white font-bold">Imagem Indisponível</p>
+            </div>
+          ) : (
+            <Image
+              className="aspect-w-3 bg-white aspect-h-6 w-full rounded-t-lg object-contain md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+              src={imageurl}
+              alt="Imagem do produto"
+              width={500}
+              height={300}
+              onError={() => handleImageError(imageurl)}
+            />
+          )}
           <div className="flex flex-col justify-start p-6">
             <h5 className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50 text-left text-justify">
               {title} - <span className="text-custom-yellow font-bold">R${price}</span>
@@ -126,7 +153,7 @@ export default function Alterar({ params }) {
               required
             />
             {validationMessage && (
-              <p className="text-red-500 font-bold">{validationMessage}</p>
+              <p className="text-red-500 text-sm font-bold mt-2">{validationMessage}</p>
             )}
           </div>
           <div className="mb-4">
@@ -136,9 +163,12 @@ export default function Alterar({ params }) {
               value={imageurl}
               className="border border-gray-400 rounded p-2 w-full text-gray-800"
               style={{ border: '1px solid #888888', color: '#888888' }}
-              onChange={(e) => setImageURL(e.target.value)}
+              onChange={handleUrlChange}
               required
             />
+            {validationMessageUrl && (
+              <p className="text-red-500 text-sm font-bold mt-2">{validationMessageUrl}</p>
+            )}
           </div>
           <div className="mb-4">
             <input
@@ -163,9 +193,14 @@ export default function Alterar({ params }) {
           </div>
           <div>
             <button
-              type="submit"
-              className="bg-custom-yellow text-white rounded py-2 px-8 hover:bg-custom-yellow-hover"
-            >
+                type="submit"
+                disabled={!!validationMessage || !!validationMessageUrl}
+                className={`rounded py-2 px-8 ${
+                  validationMessage || validationMessageUrl
+                    ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+                    : "bg-custom-yellow text-white hover:bg-custom-yellow-hover"
+                }`}
+              >
               Enviar
             </button>
           </div>

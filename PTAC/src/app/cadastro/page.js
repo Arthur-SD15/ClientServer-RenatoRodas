@@ -8,6 +8,7 @@ export default function Cadastro() {
   const [title, setTitle] = useState();
   const [price, setPrice] = useState();
   const [validationMessage, setValidationMessage] = useState("");
+  const [validationMessageUrl, setValidationMessageUrl] = useState("");
   const [details, setDetails] = useState();
   const [imageurl, setImageURL] = useState();
   const [date_register, setDate] = useState();
@@ -23,8 +24,22 @@ export default function Cadastro() {
     }
   };
 
+  const handleUrlChange = (e) => {
+    const value = e.target.value;
+    if (value === "" || value.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+      setImageURL(value);
+      setValidationMessageUrl("");
+    } else {
+      setValidationMessageUrl("O link da imagem deve terminar com .png, .jpg ou .jpeg.");
+    }
+  };
+
   const cadastrar = (e) => {
     e.preventDefault();
+
+    if(validationMessage || validationMessageUrl) {
+      return;
+    }
 
     const produto = {
       title: title,
@@ -79,7 +94,7 @@ export default function Cadastro() {
               required
             />
             {validationMessage && (
-              <p className="text-red-500 font-bold">{validationMessage}</p>
+              <p className="text-red-500 text-sm font-bold mt-2">{validationMessage}</p>
             )}
           </div>
           <div className="mb-4">
@@ -88,9 +103,12 @@ export default function Cadastro() {
               placeholder="Imagem (URL)"
               className="border border-gray-400 rounded p-2 w-full text-gray-800"
               style={{ border: "1px solid #888888", color: "#888888" }}
-              onChange={(e) => setImageURL(e.target.value)}
+              onChange={handleUrlChange}
               required
             />
+            {validationMessageUrl && (
+              <p className="text-red-500 text-sm font-bold mt-2">{validationMessageUrl}</p>
+            )}
           </div>
           <div className="mb-4">
             <input
@@ -114,7 +132,12 @@ export default function Cadastro() {
           <div>
             <button
               type="submit"
-              className="bg-custom-yellow text-white rounded py-2 px-8 hover:bg-custom-yellow-hover"
+              disabled={!!validationMessage || !!validationMessageUrl}
+              className={`rounded py-2 px-8 ${
+                validationMessage || validationMessageUrl
+                  ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+                  : "bg-custom-yellow text-white hover:bg-custom-yellow-hover"
+              }`}
             >
               Enviar
             </button>

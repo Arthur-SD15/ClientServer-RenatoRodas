@@ -1,23 +1,35 @@
 "use client";
-
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-require('dotenv').config(); 
 import Image from "next/image";
+require('dotenv').config(); 
 
-export default async function Produto({ params }) {
+export default function Produto({ params }) {
   const router = useRouter();
   const id = { id: parseInt(params.id) };
+  const [produto, setProduto] = useState(null);
+  const [imageError, setImageError] = useState(new Set());
   const url = process.env.NEXT_PUBLIC_URL_API;
 
   const idJson = JSON.stringify(id);
 
-  const req = await fetch(url + "/produtos", {
-    method: "POST",
-    cache: "no-cache",
-    headers: { "content-type": "application/json" },
-    body: idJson,
-  });
-  const produto = await req.json();
+  useEffect(() => {
+    async function loadProduto() {
+      try {
+        const req = await fetch(url + "/produtos", {
+          method: "POST",
+          cache: "no-cache",
+          headers: { "content-type": "application/json" },
+          body: idJson,
+        });
+        const data = await req.json();
+        setProduto(data);
+      } catch (error) {
+        console.error("Erro ao carregar produto", error);
+      }
+    }
+    loadProduto();
+  }, [idJson, url]);
 
   const remover = () => {
     try {
@@ -26,12 +38,13 @@ export default async function Produto({ params }) {
         headers: { "content-type": "application/json" },
         body: idJson,
       });
+      router.refresh();
       router.push("/produtos");
     } catch (error) {
       alert("Ocorreu um erro" + error);
     }
   };
-  
+
   const alterar = () => {
     try {
       fetch(url + "/produto", { 
@@ -45,25 +58,44 @@ export default async function Produto({ params }) {
           date_register: produto.date_register
         }),
       });
-      router.push("/alterar/"+ params.id);
+      router.push("/alterar/" + params.id);
     } catch (error) {
       alert("Ocorreu um erro" + error);
     }
   };
-  
+
+  const handleImageError = (imageUrl) => {
+    setImageError((prev) => new Set(prev).add(imageUrl));
+  };
+
+  if (!produto) {
+    return <div className="flex items-center justify-center h-screen">
+              <p className="text-gray-600 text-lg animate-pulse">
+                Carregando...
+              </p>
+            </div>;
+  }
+
   return (
     <div className="flex m-8 justify-center">
       <div
         className="flex flex-col rounded-lg bg-white dark:bg-custom-blue md:max-w-4xl md:flex-row shadow-lg"
         style={{ boxShadow: "3px 5px 7px 3px rgba(255, 157, 0, 0.8)" }}
       >
-        <Image
-  className="aspect-w-3 bg-white aspect-h-6 w-full rounded-t-lg object-contain md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-  src={produto.imageurl}
-  alt="Imagem do produto"
-  width={500}  // Defina a largura da imagem
-  height={300} // Defina a altura da imagem
-/>
+        {imageError.has(produto.imageurl) ? (
+          <div className="flex items-center justify-center text-center w-full">
+            <p className="text-white font-bold">Imagem Indisponível</p>
+          </div>
+        ) : (
+          <Image
+            className="aspect-w-3 bg-white aspect-h-6 w-full rounded-t-lg object-contain md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+            src={produto.imageurl}
+            alt="Imagem do produto"
+            width={500}
+            height={300}
+            onError={() => handleImageError(produto.imageurl)}
+          />
+        )}
         <div className="flex flex-col justify-start p-6">
           <h5 className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50 text-left text-justify">
             {produto.title} -{" "}
